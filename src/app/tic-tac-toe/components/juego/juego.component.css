@@ -1,0 +1,12 @@
+.juego {
+  width: 540px;
+  text-align: center;
+}
+
+.casilla {
+  font-size: 10rem;
+  width: 170px;
+  height: 170px;
+  border: 5px solid green;
+  float: left;
+}

@@ -1,0 +1,14 @@
+<div class="container">
+  Tic Tac Toe
+  <router-outlet></router-outlet>
+  <p *ngIf="hayGanador">El ganador es el jugador {{ jugador }}</p>
+  <p *ngIf="hayEmpate">¡Empate! Reinicia el juego</p>
+  <button (click)="reiniciar()">Reiniciar</button>
+  <input
+    type="checkbox"
+    name="vsMaquina"
+    id="vsMaquina"
+    (change)="cambiarAdversario()"
+  />Jugar contra máquina
+</div>
+
