@@ -46,7 +46,9 @@ export class AppComponent {
       this.isPlayerOne = !this.isPlayerOne;
     }
     if (this.contraMaquina && !this.detenerJuego()) {
-      this.jugarIA();
+      setTimeout(() => {
+        this.jugarIA();
+      }, 500);
     }
   }
   casilla(index: number): HTMLElement {
@@ -123,12 +125,15 @@ export class AppComponent {
   verificarLinea() {
     let hayLineaGanadora = false;
     this.lineas.forEach((linea) => {
-      const aHTML = document.getElementById(linea[0].toString()).innerHTML;
-      const bHTML = document.getElementById(linea[1].toString()).innerHTML;
-      const cHTML = document.getElementById(linea[2].toString()).innerHTML;
+      const aHTML = this.casilla(linea[0]).innerHTML;
+      const bHTML = this.casilla(linea[1]).innerHTML;
+      const cHTML = this.casilla(linea[2]).innerHTML;
 
       if (aHTML !== '' && aHTML == bHTML && bHTML == cHTML) {
         hayLineaGanadora = true;
+        this.casilla(linea[0]).style.color = 'green';
+        this.casilla(linea[1]).style.color = 'green';
+        this.casilla(linea[2]).style.color = 'green';
       }
     });
     return hayLineaGanadora;
@@ -141,7 +146,8 @@ export class AppComponent {
     this.hayEmpate = false;
     this.isPlayerOne = true;
     for (let i = 0; i < 9; i++) {
-      document.getElementById(i.toString()).innerHTML = '';
+      this.casilla(i).innerHTML = '';
+      this.casilla(i).style.color = 'white';
     }
   }
 
